@@ -1,10 +1,11 @@
+//*****
 #include <iostream>
 using namespace std;
-
+///////////////////////////////////////me
 class UserAuthentication {
 private:
   int accountNumber;
-  int cardNumbers[6] = {1503, 1607, 1706, 1305, 1204, 2013};
+ // int cardNumbers[6] = {1503, 1607, 1706, 1305, 1204, 2013};
 
 public:
   UserAuthentication() {
@@ -23,17 +24,18 @@ public:
     return false;
   }
 
-  void createAccount() {
+  void createAccount(int accountNumbers[], int size) {
+   
     int oldPin, newPin;
     cout << "Enter the old PIN: ";
     cin >> oldPin;
     cout << "Enter the new PIN: ";
     cin >> newPin;
 
-    for (int i = 0; i < 6; i++) {
-      if (cardNumbers[i] == oldPin) {
-        cardNumbers[i] = newPin;
-        cout << "The new PIN is: " << cardNumbers[i] << endl;
+    for (int i = 0; i < 50 ; i++) {
+      if (accountNumbers[i] == oldPin) {
+        accountNumbers[i] = newPin;
+        cout << "The new PIN is: " <<accountNumbers[i] << endl;
         return;
       }
     }
@@ -41,6 +43,7 @@ public:
     cout << "The old PIN is invalid." << endl;
   }
 };
+//////////////////////////////////@
 class transferToOther {
 private:
     float pinCard, value;
@@ -53,6 +56,7 @@ public:
         cout << "You are sent " << value << " to " << pinCardOther << endl;
     }
 };
+////////////////////////////////////@
 class getFromBank {
 private:
     float balance;
@@ -66,6 +70,7 @@ public:
     }
 };
 
+/////////////////////////////////////////me
 class BankAccount {
     private:
       string HouderName ; 
@@ -82,6 +87,10 @@ class BankAccount {
              cout << "the new balance is "<< balance << "$" ; 
            }    
        }
+       void deposit(double ammount) {
+             balance -= ammount ; 
+             cout << "Deposit of $" << ammount << " successful." << endl;
+    }
        void payElectricityBill(double amount) {
       if (amount <= balance) {
         balance -= amount;
@@ -109,6 +118,7 @@ class BankAccount {
     }
        // comblete the new idea
 }; 
+////////////////////////////////////////////////////////@
 class currency {
 private:
     double value;
@@ -139,7 +149,7 @@ public:
     }
     
 };
-
+////////////////////////////////////////me
 class Portfolio {
 private:
     double balance ;  // the balnce 
@@ -176,6 +186,7 @@ public:
 
         }
 };
+////////////*//////////////////////@
 class payForCompany {
 private:
     int idStu;
@@ -189,50 +200,93 @@ public:
         cout << "We sent " << value << " to " << name << " by your ID " << idStu << endl;
     }
 };
+///////////////////////////me 
 class Chooising {
 
 
 private:
-    string accountType;
+    int  accountType;
 
 public:
+ 
     void selectAccountType() {
-        cout << "Enter your account type (savings or checking): ";
-        cin >> accountType;
-    }
     
-    void displayAccountType() {
-        cout << "You have selected a " << accountType << " account." << endl;
+        cout << "Enter your account type (savings or checking): ";
+        
     }
-
+   
+    void displayAccountType(int accountType ) {
+     if (accountType==1 ){
+        cout << "You have selected a " << accountType << " account savings." << endl;
+    }
+    if else (accountType==2)
+        cout << "You have selected a " << accountType << " account checking ." << endl;
+    
 };
+///////////////////////////////////////////////////me
+class Financialconsulting{
+
+  private : 
+   int balance ; 
+
+  public : 
+   
+    Financialconsulting(int b ){
+      balance = b ;
+    } 
+   
+   int getbalnce(){
+     return balance ; 
+   }
+
+   void  consulting(){
+
+    cin >> balance ; 
+
+    if(balance <=  1000 ) {
+        cout <<" it is important to have an emergency fund"; 
+        cout <<"that can cover at least 3-6 months of living expenses.";
+        cout <<"This can provide a safety net";  
+        cout <<"in case of unexpected events like job loss,illness or injury.";     
+    }
+   
+   else if (balance > 1000 && balance <= 2000)
+   {
+    cout<<" investing for your future, such as retirement,can help you"; 
+    cout<<"achieve your financial goals."; 
+    cout<<"You can open a tax-advantaged retirement account,"; 
+    cout<<"like an IRA or 401(k)," ;
+    cout<<"or invest in low-cost index funds or ETFs.";
+   }
+   else if (balance > 2000 && balance <=10000){
+    cout <<"Remember, your bank offers a range of services and tools"; 
+    cout<<"that can helpyou manage your finances," ;
+    cout<<"so be sure to take advantage of them. This includes online"; 
+    cout << "banking, mobile apps, and budgeting tools." ; 
+
+   }
+   else if (balance > 10000){
+        cout<<" investing for the future " ;
+        cout<<" reviewing your financial situation regularly,";
+        cout<< "and being wary of scams,";
+        cout<<" you can improve your financial wellbeing."; 
+        cout<< "However, it is important to speak with a qualified"; 
+        cout<<"financial advisor for personalized advice" ;
+        cout << "that takes into account your unique financialsituation";
+        cout << "goals, and risk tolerance " ; 
+   }
+   } 
+};
+////////////////////////////////////////////////////////////////
 
 
 
 int main()
-int accountNumbers[] = {1001, 1002, 1003, 1004, 1005};
-  int size = 5;
-  cout << "Enter your Account Number: ";
-  int accountNumber;
-  cin >> accountNumber;
-
-  UserAuthentication obj;
-
-  char n;
-  cout << "Do you want to use an existing account? [y/n]: ";
-  cin >> n;
-  if (n == 'y') {
-    if (obj.authenticate(accountNumber, accountNumbers, size)) {
-      cout << "Account number found." << endl;
-    } else {
-      cout << "Account number not found." << endl;
-    }
-  } else if (n == 'n') {
-    obj.createAccount();
-  }
-
+int accountType ;
+cin >> accountType ;
+       
   Chooising myAccount;
-    myAccount.selectAccountType();
+    myAccount.selectAccountType(accountType );
     myAccount.displayAccountType(); 
 
 
@@ -242,18 +296,64 @@ int accountNumbers[] = {1001, 1002, 1003, 1004, 1005};
         cout << " \n \n \t \t Welcome our good user! \n";
         cout << "choose the type of your operation on ATM \n";
         cout << "\n \t \t \t \tMain Menu \n";
-        cout << "\t (1) Balance Inquiry     \t (2) BankAccount  \n";
-        cout << "\t (3) Password Change     \t (4) Deposit \n";
+        cout << "\t (1) UserAuthentication    \t (2) BankAccount  \n";
+        cout << "\t (3) Password Change#     \t (4) language ;
         cout << "\t (5) Transfer for other  \t (6) Currency Exchange \n";
-        cout << "\t (7) Pay for other       \t (8) Pay off your loan \n";
-        cout << "\t (9) Take a loan         \t (10) transfer outside Country \n";
-        cout << "\t (11)sell or buy stocks. \t  ()                           \n"
+        cout << "\t (7) Pay for other       \t (8) Pay off your loan# \n";
+        cout << "\t (9) Take a loan#         \t (10) transfer outside Country \n";
+        cout << "\t (11)sell or buy stocks. \t  (12) Financialconsulting\n " ;                          \n"
         cout << "\nEnter number of your operation on ATM: ";
         cin >> typeOperationATM;
 
-        if (typeOperationATM == 2) {
+
+
+
+        if (typeOperationATM == 1 ){
+        
+        
+        int* accountNumbers = new int [50] ; 
+  int size = 50 ;
+  cin >> accountNumber
+  cout << "Enter your Account Number: ";
+  for (int i = 0 ; i < 50 ; i++){
+    cin >> *(accountNumbers+i) ; 
+  } 
+        
+        
+        ////////////////////////
+        /*
+            int accountNumbers[] = {1001, 1002, 1003, 1004, 1005};
+            int size = 5;
+            cout << "Enter your Account Number: ";
+            int accountNumber;
+            cin >> accountNumber ; 
+            UserAuthentication obj;
+            
+            */
+            int* accountNumbers = new int [50] ; 
+            int size = 50 ;
+            cin >> accountNumber
+            cout << "Enter your Account Number: ";
+            for (int i = 0 ; i < 50 ; i++){
+            cin >> *(accountNumbers+i) ; 
+             } 
+            char n;
+            cout << "Do you want to use an existing account? [y/n]: ";
+            cin >> n;
+            if (n == 'y') {
+               if (obj.authenticate(accountNumber, accountNumbers, 50)) {
+               cout << "Account number found." << endl;
+               } else  {
+                 cout << "Account number not found." << endl;
+                }
+          } else if (n == 'n') {
+             obj.createAccount();
+             }
+        
+        
+        if else (typeOperationATM == 2) {
             BankAccount obj("hamza ",15000.0);
-            cout<< "(1) for withdrow \t (2) for payElectricityBill \t (3) for payWaterBill \t  (4) for payGasBill \n " ; 
+            cout<< "(1) for withdrow \t (2) for payElectricityBill \t (3) for payWaterBill \t  (4) for payGasBill  \t deposit(5) \n " ; 
             int input ; 
             cin>> input
             if (input == 1 ){
@@ -268,6 +368,8 @@ int accountNumbers[] = {1001, 1002, 1003, 1004, 1005};
             if else (input == 4 ){
             obj.payGasBill(750.0);
             }
+            if else (input == 5 ) {
+            obj. deposit(100.0);
         }
         
         
@@ -496,3 +598,11 @@ cin>> priceofstok ;
   }  
   
 }
+
+else if (typeOperationATM == 12) {
+   Financialconsulting object(20000) ; 
+   object.consulting();
+    
+  }
+
+
